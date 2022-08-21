@@ -1,6 +1,6 @@
 # 3craft
 
-3d Minecraft clone made using the Ursina game engine in Python.
+3d Minecraft clone made using the Ursina game engine in Python. Based on https://github.com/kairess/minecraft-clone
 
 ![](result.png)
 
