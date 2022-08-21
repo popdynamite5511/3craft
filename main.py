@@ -1,6 +1,5 @@
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
-
 app = Ursina()
 
 window.fps_counter.enabled = True
@@ -64,7 +63,6 @@ class Voxel(Button):
             color=color.color(0, 0, random.uniform(0.9, 1.0)),
             scale=0.5
         )
-
     def input(self, key):
         if self.hovered:
             if key == 'left mouse down':
@@ -72,8 +70,8 @@ class Voxel(Button):
             elif key == 'right mouse down':
                 Voxel(position=self.position + mouse.normal, texture=blocks[block_id])
 
-for z in range(20):
-    for x in range(20):
+for z in range(25):
+    for x in range(25):
         voxel = Voxel(position=(x, 0, z))
 
 player = FirstPersonController()
