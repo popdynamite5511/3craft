@@ -41,7 +41,7 @@ sky = Entity(
     parent=scene,
     model='sphere',
     texture=load_texture('assets/sky.jpg'),
-    scale=5000,
+    scale=10000,
     double_sided=True
 )
 
