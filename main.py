@@ -3,10 +3,11 @@ from ursina.prefabs.first_person_controller import FirstPersonController
 
 app = Ursina()
 
-window.fps_counter.enabled = False
-window.exit_button.visible = False
+window.fps_counter.enabled = True
+window.exit_button.visible = True
 
 punch = Audio('assets/punch', autoplay=False)
+Audio('assets/venus', autoplay=True)
 
 blocks = [
     load_texture('assets/grass.png'), # 0
@@ -14,6 +15,7 @@ blocks = [
     load_texture('assets/stone.png'), # 2
     load_texture('assets/gold.png'),  # 3
     load_texture('assets/lava.png'),  # 4
+    load_texture('assets/iron.png'),  # 5
 ]
 
 block_id = 1
@@ -30,7 +32,7 @@ sky = Entity(
     parent=scene,
     model='sphere',
     texture=load_texture('assets/sky.jpg'),
-    scale=500,
+    scale=5000,
     double_sided=True
 )
 
@@ -40,12 +42,13 @@ hand = Entity(
     texture=blocks[block_id],
     scale=0.2,
     rotation=Vec3(-10, -10, 10),
-    position=Vec2(0.6, -0.6)
+    position=Vec2(0.7, -0.6)
 )
 
 def update():
     if held_keys['left mouse'] or held_keys['right mouse']:
         punch.play()
+        hand.position = Vec2(0.2, -0.3)
         hand.position = Vec2(0.4, -0.5)
     else:
         hand.position = Vec2(0.6, -0.6)
@@ -65,9 +68,9 @@ class Voxel(Button):
     def input(self, key):
         if self.hovered:
             if key == 'left mouse down':
-                Voxel(position=self.position + mouse.normal, texture=blocks[block_id])
-            elif key == 'right mouse down':
                 destroy(self)
+            elif key == 'right mouse down':
+                Voxel(position=self.position + mouse.normal, texture=blocks[block_id])
 
 for z in range(20):
     for x in range(20):
