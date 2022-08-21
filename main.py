@@ -1,6 +1,16 @@
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
+try:
+    from collections.abc import Iterable
+except ImportError:
+    from collections import Iterable
+from perlin_noise import PerlinNoise
+from numpy import floor
 app = Ursina()
+
+noise = PerlinNoise(octaves=3, seed=random.randint(1000, 9999))
+
+
 
 window.fps_counter.enabled = True
 window.exit_button.visible = True
@@ -61,7 +71,8 @@ class Voxel(Button):
             origin_y=0.5,
             texture=texture,
             color=color.color(0, 0, random.uniform(0.9, 1.0)),
-            scale=0.5
+            scale=0.5,
+            highlight_color=color.gray
         )
     def input(self, key):
         if self.hovered:
@@ -72,7 +83,8 @@ class Voxel(Button):
 
 for z in range(25):
     for x in range(25):
-        voxel = Voxel(position=(x, 0, z))
+        y = 0.25 + noise([x/20, z/20])
+        voxel = Voxel(position=(x, y, z))
 
 player = FirstPersonController()
 
