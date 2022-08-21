@@ -1,20 +1,10 @@
-# Minecraft Clone
+# 3craft
 
-Minecraft clone using Python Ursina game engine!
+3d Minecraft clone made using the Ursina game engine in Python. Based on https://github.com/kairess/minecraft-clone
 
 ![](result.png)
 
-## Dependency
-
-- Python 3
+To run this game, the following have to be installed onto your system:
+- Python 3 (preferably the newest release of it)
 - Ursina https://www.ursinaengine.org/
 
-## Assets
-
-- https://www.cgtrader.com/3d-models/textures/architectural-textures/minecraft-all-about-blocks
-- https://freesound.org/people/kretopi/sounds/406464/
-- https://guildofwriters.org/wiki/Adding_Atmosphere
-
-## Reference
-
-- Official Ursina Mincraft clone sample https://github.com/pokepetter/ursina/blob/master/samples/minecraft_clone.py
