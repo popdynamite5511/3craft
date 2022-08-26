@@ -16,7 +16,8 @@ window.fps_counter.enabled = True
 window.exit_button.visible = True
 
 punch = Audio('assets/punch', autoplay=False)
-Audio('assets/venus', autoplay=True)
+venus = Audio('assets/venus', autoplay=True)
+moog = Audio('assets/moog', autoplay=False)
 
 blocks = [
     load_texture('assets/grass.png'), # 0
@@ -38,6 +39,16 @@ def input(key):
         hand.texture = blocks[block_id]
     elif key == 'escape':
         mouse.locked = not mouse.locked
+    
+        
+hotbar = Entity(
+    parent=camera.ui,
+    model='',
+    texture='assets/hotbar.png',
+    scale= -0.1,
+    rotation=Vec3(0, 0, 0),
+    position=Vec2(0, -0.4175)
+)
 
 sky = Entity(
     parent=scene,
@@ -63,6 +74,11 @@ def update():
         hand.position = Vec2(0.4, -0.5)
     else:
         hand.position = Vec2(0.6, -0.6)
+
+    if held_keys['m']:
+        moog.play()
+        venus.pause()
+        
 
 class Voxel(Button):
     def __init__(self, position=(0, 0, 0), texture='assets/grass.png'):
