@@ -36,6 +36,8 @@ def input(key):
         if block_id >= len(blocks):
             block_id = len(blocks) - 1
         hand.texture = blocks[block_id]
+    elif key == 'escape':
+        mouse.locked = not mouse.locked
 
 sky = Entity(
     parent=scene,
