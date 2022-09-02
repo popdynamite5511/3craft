@@ -10,7 +10,7 @@ app = Ursina()
 
 noise = PerlinNoise(octaves=3, seed=random.randint(1000, 9999))
 
-
+FPC = FirstPersonController()
 
 window.fps_counter.enabled = True
 window.exit_button.visible = True
@@ -67,6 +67,16 @@ hand = Entity(
     position=Vec2(0.7, -0.6)
 )
 
+class Hand(Entity):
+    def __init__(self):
+        super().__init__(
+            parent=camera.ui,
+            model='assets/arm',
+            texture=load_texture('assets/arm_texture.png'),
+            scale=0.2,
+            rotation=Vec3(150, -10, 0),
+            position=Vec2(0.4, -0.6))
+
 def update():
     if held_keys['left mouse'] or held_keys['right mouse']:
         punch.play()
@@ -78,9 +88,13 @@ def update():
     if held_keys['m']:
         moog.play()
         venus.pause()
+
+    if player.position.y < -8:
+        player.position = Vec3(0,20,0)
+        
         
 
-class Voxel(Button):
+class Voxel(Button): #Grass
     def __init__(self, position=(0, 0, 0), texture='assets/grass.png'):
         super().__init__(
             parent=scene,
@@ -104,6 +118,31 @@ for z in range(25):
         y = 0.25 + noise([x/20, z/20])
         voxel = Voxel(position=(x, y, z))
 
-player = FirstPersonController()
+class Voxel(Button): #Stone
+    def __init__(self, position=(0, 0, 0), texture='assets/stone.png'):
+        super().__init__(
+            parent=scene,
+            position=position,
+            model='assets/block',
+            origin_y=0.5,
+            texture=texture,
+            color=color.color(0, 0, random.uniform(0.9, 1.0)),
+            scale=0.5,
+            highlight_color=color.gray
+        )
+    def input(self, key):
+        if self.hovered:
+            if key == 'left mouse down':
+                destroy(self)
+            elif key == 'right mouse down':
+                
+                Voxel(position=self.position + mouse.normal, texture=blocks[block_id])
+                
+for z in range(25):
+    for x in range(25):
+        y = 0.25 + noise([x/20, z/20])
+        voxel = Voxel(position=(x, -1, z))
 
+player = FirstPersonController()
+hand = Hand()
 app.run()
