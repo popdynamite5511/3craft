@@ -11,7 +11,7 @@ window.borderless = False
 window.title = "3craft"
 window.icon = "assets/icns/app.icns"
 
-noise = PerlinNoise(octaves=3, seed=random.randint(1000, 9999))
+#noise = PerlinNoise(octaves=3, seed=random.randint(1000, 9999))
 
 FPC = FirstPersonController()
 
@@ -118,7 +118,7 @@ class Voxel(Button): #Grass
 
 for z in range(25):
     for x in range(25):
-        y = 0.25 + noise([x/20, z/20])
+        y = 0 #+ noise([x/20, z/20])
         voxel = Voxel(position=(x, y, z))
 
 class Voxel(Button): #Stone
@@ -143,8 +143,26 @@ class Voxel(Button): #Stone
                 
 for z in range(25):
     for x in range(25):
-        y = 0.25 + noise([x/20, z/20])
+        y = 0.25 # + noise([x/20, z/20])
         voxel = Voxel(position=(x, -1, z))
+
+class Voxel(Button): #Bedrock
+    def __init__(self, position=(0, 0, 0), texture='assets/bedrock.png'):
+        super().__init__(
+            parent=scene,
+            position=position,
+            model='assets/block',
+            origin_y=0.5,
+            texture=texture,
+            color=color.color(0, 0, random.uniform(0.9, 1.0)),
+            scale=0.5,
+            highlight_color=color.gray
+            )
+        
+for z in range(25):
+    for x in range(25):
+        y = 0.25 # + noise([x/20, z/20])
+        voxel = Voxel(position=(x, -2, z))
 
 player = FirstPersonController()
 hand = Hand()
