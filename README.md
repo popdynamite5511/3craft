@@ -7,4 +7,4 @@
 To run this game, the following have to be installed onto your system:
 - Python 3 (preferably the newest release of it)
 - Ursina https://www.ursinaengine.org/
-
+Install Urina by typing 'pip install ursina'. You may need to install 'pip' if you haven't already.

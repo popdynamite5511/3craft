@@ -7,6 +7,8 @@ except ImportError:
 from perlin_noise import PerlinNoise
 from numpy import floor
 app = Ursina()
+window.borderless = False
+window.title = "3craft"
 
 noise = PerlinNoise(octaves=3, seed=random.randint(1000, 9999))
 
