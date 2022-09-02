@@ -9,6 +9,7 @@ from numpy import floor
 app = Ursina()
 window.borderless = False
 window.title = "3craft"
+window.icon = "assets/icns/app.icns"
 
 noise = PerlinNoise(octaves=3, seed=random.randint(1000, 9999))
 
