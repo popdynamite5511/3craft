@@ -38,6 +38,10 @@ blocks = [
     load_texture('assets/gold.png'),  # 3
     load_texture('assets/lava.png'),  # 4
     load_texture('assets/iron.png'),  # 5
+    load_texture('assets/log.png'), # 6
+    load_texture('assets/leaves.png'), # 7
+    load_texture('assets/planks.png'), # 8
+    load_texture('assets/planks.png') # 9
 ]
 
 block_id = 1
