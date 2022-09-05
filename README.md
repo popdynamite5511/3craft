@@ -14,6 +14,6 @@ The game can also be run on Linux distributions. I'm not sure of the minimum req
 ![](result.png)
 
 To run this game, the following have to be installed onto your system:
-- Python 3.6 or newer(preferably the newest release though)
+- Python 3.6 or newer (preferably the newest release though)
 - Ursina https://www.ursinaengine.org/
 Install Urina by typing 'pip install ursina'. You may need to install 'pip' if you haven't already.
