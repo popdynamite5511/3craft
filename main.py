@@ -57,14 +57,14 @@ def input(key):
         mouse.locked = not mouse.locked
     
         
-hotbar = Entity(
-    parent=camera.ui,
-    model='',
-    texture='assets/hotbar.png',
-    scale= -0.1,
-    rotation=Vec3(0, 0, 0),
-    position=Vec2(0, -0.4175)
-)
+#hotbar = Entity(
+  #  parent=camera.ui,
+   # model='',
+   # texture='assets/hotbar.png',
+   # scale= -0.1,
+  #  rotation=Vec3(0, 0, 0),
+   # position=Vec2(0, -0.4175)
+#)
 
 sky = Entity(
     parent=scene,
