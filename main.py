@@ -27,21 +27,21 @@ window.fps_counter.enabled = True
 window.exit_button.visible = True
 window.vsync = False
 
-punch = Audio('assets/punch', autoplay=False)
-venus = Audio('assets/venus', autoplay=True)
-moog = Audio('assets/moog', autoplay=False)
+punch = Audio('assets/music/punch', autoplay=False)
+venus = Audio('assets/music/venus', autoplay=True)
+moog = Audio('assets/music/moog', autoplay=False)
 
 blocks = [
-    load_texture('assets/grass.png'), # 0
-    load_texture('assets/grass.png'), # 1
-    load_texture('assets/stone.png'), # 2
-    load_texture('assets/gold.png'),  # 3
-    load_texture('assets/lava.png'),  # 4
-    load_texture('assets/iron.png'),  # 5
-    load_texture('assets/log.png'), # 6
-    load_texture('assets/leaves.png'), # 7
-    load_texture('assets/planks.png'), # 8
-    load_texture('assets/planks.png') # 9
+    load_texture('assets/textures/grass.png'), # 0
+    load_texture('assets/textures/grass.png'), # 1
+    load_texture('assets/textures/stone.png'), # 2
+    load_texture('assets/textures/gold.png'),  # 3
+    load_texture('assets/textures/lava.png'),  # 4
+    load_texture('assets/textures/iron.png'),  # 5
+    load_texture('assets/textures/log.png'), # 6
+    load_texture('assets/textures/leaves.png'), # 7
+    load_texture('assets/textures/planks.png'), # 8
+    load_texture('assets/textures/planks.png') # 9
 ]
 
 block_id = 1
@@ -69,7 +69,7 @@ def input(key):
 sky = Entity(
     parent=scene,
     model='sphere',
-    texture=load_texture('assets/sky.jpg'),
+    texture=load_texture('assets/textures/sky.jpg'),
     scale=10000,
     double_sided=True
 )
@@ -78,7 +78,7 @@ class Hand(Entity):
     def __init__(self):
         super().__init__(
             parent=camera.ui,
-            model='assets/block',
+            model='assets/objects/block',
             #texture=load_texture('assets/arm_texture.png'),
             scale=0.2,
             rotation=Vec3(-10, -10, 10),
@@ -103,11 +103,11 @@ def update():
         
 
 class Voxel(Button): #Grass
-    def __init__(self, position=(0, 0, 0), texture='assets/grass.png'):
+    def __init__(self, position=(0, 0, 0), texture='assets/textures/grass.png'):
         super().__init__(
             parent=scene,
             position=position,
-            model='assets/block',
+            model='assets/objects/block',
             origin_y=0.5,
             texture=texture,
             color=color.color(0, 0, random.uniform(0.9, 1.0)),
@@ -132,11 +132,11 @@ for z in range(25):
         
 
 class Voxel(Button): #Bedrock
-    def __init__(self, position=(0, 0, 0), texture='assets/bedrock.png'):
+    def __init__(self, position=(0, 0, 0), texture='assets/textures/bedrock.png'):
         super().__init__(
             parent=scene,
             position=position,
-            model='assets/block',
+            model='assets/objects/block',
             origin_y=0.5,
             texture=texture,
             color=color.color(0, 0, random.uniform(0.9, 1.0)),
@@ -152,11 +152,11 @@ for z in range(25):
         
 
 class Voxel(Button): #Stone
-    def __init__(self, position=(0, 0, 0), texture='assets/stone.png'):
+    def __init__(self, position=(0, 0, 0), texture='assets/textures/stone.png'):
         super().__init__(
             parent=scene,
             position=position,
-            model='assets/block',
+            model='assets/objects/block',
             origin_y=0.5,
             texture=texture,
             color=color.color(0, 0, random.uniform(0.9, 1.0)),
