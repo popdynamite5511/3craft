@@ -74,25 +74,17 @@ sky = Entity(
     double_sided=True
 )
 
-hand = Entity(
-    parent=camera.ui,
-    model='assets/block',
-    texture=blocks[block_id],
-    scale=0.2,
-    rotation=Vec3(-10, -10, 10),
-    position=Vec2(0.7, -0.6),
-    shader=lit_with_shadows_shader
-)
-
 class Hand(Entity):
     def __init__(self):
         super().__init__(
             parent=camera.ui,
-            model='assets/arm',
-            texture=load_texture('assets/arm_texture.png'),
+            model='assets/block',
+            #texture=load_texture('assets/arm_texture.png'),
             scale=0.2,
-            rotation=Vec3(150, -10, 0),
-            position=Vec2(0.4, -0.6))
+            rotation=Vec3(-10, -10, 10),
+            position=Vec2(0.7, -0.6),
+            shader=lit_with_shadows_shader
+            )
 
 def update():
     if held_keys['left mouse'] or held_keys['right mouse']:
